@@ -22,15 +22,12 @@ async function main() {
     
     if (result.errors.length > 0) {
       console.log("⚠️ Errors:");
-      result.errors.forEach(e => console.log(`   - ${e}`));
+      result.errors.forEach((e: string) => console.log(`   - ${e}`));
     }
     
     // Write index
     const index = aggregator.generateIndex();
     const dataDir = resolve("./src/registry/data");
-    if (!existsSync(dataDir)) mkdirSync(dataDir, { recursive: true });
-    
-    const { writeFileSync, mkdirSync, existsSync } = await import("fs");
     if (!existsSync(dataDir)) mkdirSync(dataDir, { recursive: true });
     
     writeFileSync(
@@ -41,7 +38,7 @@ async function main() {
     console.log("📁 Index written to src/registry/data/index.json");
     
     process.exit(result.errors.length > 0 ? 1 : 0);
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("❌ Sync failed:", error);
     process.exit(1);
   }

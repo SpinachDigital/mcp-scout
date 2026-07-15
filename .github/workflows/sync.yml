@@ -24,9 +24,7 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - name: Sync Registries
-        run: npm run sync --workspace=cli -- ${{
-          github.event.inputs.full == 'true' && '--full' || ''
-        }}
+        run: npm run sync --workspace=cli -- ${{ github.event.inputs.full == 'true' && '--full' || '' }}
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}

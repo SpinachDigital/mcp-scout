@@ -21,7 +21,7 @@ async function main() {
     
     if (result.errors.length > 0) {
       console.log("⚠️ Errors:");
-      result.errors.forEach(e => console.log(`   - ${e}`));
+      result.errors.forEach((e: string) => console.log(`   - ${e}`));
     }
     
     // Write index
@@ -37,7 +37,7 @@ async function main() {
     console.log("📁 Index written to src/registry/data/index.json");
     
     process.exit(result.errors.length > 0 ? 1 : 0);
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("❌ Sync failed:", error);
     process.exit(1);
   }
