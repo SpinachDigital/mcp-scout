@@ -1,5 +1,5 @@
 "use client";
-import { Github, Twitter, Discord, Mail } from "lucide-react";
+import { Github, Twitter, MessageSquare, Mail } from "lucide-react";
 
 export function Footer() {
   return (
@@ -22,7 +22,7 @@ export function Footer() {
                 <Twitter className="w-5 h-5" />
               </a>
               <a href="https://discord.gg/mcp-scout" target="_blank" rel="noopener noreferrer" className="text-[#6E6E6E] hover:text-[#00FFAA] transition-colors">
-                <Discord className="w-5 h-5" />
+                <MessageSquare className="w-5 h-5" />
               </a>
               <a href="mailto:hello@mcp-scout.dev" className="text-[#6E6E6E] hover:text-[#00FFAA] transition-colors">
                 <Mail className="w-5 h-5" />

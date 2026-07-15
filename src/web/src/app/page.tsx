@@ -81,7 +81,7 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-4xl font-bold mb-4">Ready to build with MCP?</h2>
-              <p className="text-xl text-[#B8B8B8]">Install the CLI and start adding servers to your agents in seconds.</            </div>
+              <p className="text-xl text-[#B8B8B8]">Install the CLI and start adding servers to your agents in seconds.</p>            </div>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <pre className="bg-[#0D0D0D] border border-[#2A2A2A] rounded-xl p-6 text-sm overflow-x-auto max-w-2xl w-full">
                 <code className="text-[#00FFAA]">npm install -g mcp-scout</code>

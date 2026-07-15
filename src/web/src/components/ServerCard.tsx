@@ -1,5 +1,6 @@
 "use client";
-import { Star, Fork, CheckCircle, Bookmark, ExternalLink, Terminal } from "lucide-react";
+import { Star, GitBranch, CheckCircle, Bookmark, ExternalLink, Terminal } from "lucide-react";
+import { useState } from "react";
 import { cn, formatNumber } from "@/lib/utils";
 
 interface ServerCardProps {
@@ -71,7 +72,7 @@ export function ServerCard({ server }: ServerCardProps) {
             {formatNumber(server.stars)}
           </span>
           <span className="flex items-center gap-1">
-            <Fork className="w-4 h-4" />
+            <GitBranch className="w-4 h-4" />
             {formatNumber(server.forks)}
           </span>
           <span className="flex items-center gap-1 text-xs px-2 py-0.5 bg-[#161616] rounded-full">
