@@ -7,26 +7,26 @@
 [![Node >=20](https://img.shields.io/badge/node-%3E%3D20-brightgreen)](https://nodejs.org)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-00FFAA.svg)](CONTRIBUTING.md)
 
-## 🎯 What is MCP Scout?
+## What is MCP Scout?
 
-MCP (Model Context Protocol) servers are exploding — but they're scattered across 7+ registries with no unified search. **MCP Scout solves this.**
+MCP (Model Context Protocol) servers are exploding - but they're scattered across 7+ registries with no unified search. **MCP Scout solves this.**
 
 One CLI. One Web UI. Searches **all registries** (official, agentic-community, toolsdk, mcpm.sh, and more). Install directly to Claude Code, Cursor, Cline, Codex, or generic config.
 
-## ✨ Features
+## Features
 
 | Feature | Description |
 |---------|-------------|
-| 🔍 **Unified Search** | Searches 7+ registries simultaneously |
-| 📦 **One-Click Install** | Auto-configures for Claude, Cursor, Cline, Codex |
-| 🏷️ **Smart Filters** | By category, tags, verification status, stars |
-| ⚡ **Local Sync** | Cached registry for offline search |
-| 🎯 **Verified Badges** | Official + community-verified servers |
-| 🌐 **Web UI** | Beautiful search at `mcp-scout.dev` |
-| 📊 **Trending** | Weekly trending servers |
-| 🔄 **Auto-Update** | `mcp-scout sync` keeps registry fresh |
+| Unified Search | Searches 7+ registries simultaneously |
+| One-Click Install | Auto-configures for Claude, Cursor, Cline, Codex |
+| Smart Filters | By category, tags, verification status, stars |
+| Local Sync | Cached registry for offline search |
+| Verified Badges | Official + community-verified servers |
+| Web UI | Beautiful search at mcp-scout.dev |
+| Trending | Weekly trending servers |
+| Auto-Update | `mcp-scout sync` keeps registry fresh |
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Install CLI
 
@@ -75,16 +75,16 @@ mcp-scout sync
 mcp-scout sync --full
 ```
 
-## 🌐 Web UI
+## Web UI
 
-Visit **[mcp-scout.dev](https://mcp-scout.dev)** for the full web experience:
+Visit **mcp-scout.dev** for the full web experience:
 - Advanced filters and faceted search
 - Server comparison view
 - Trending & featured servers
 - Category browsing
 - Install commands copy-paste
 
-## 📦 Supported Registries
+## Supported Registries
 
 | Registry | Servers | Source |
 |----------|---------|--------|
@@ -95,30 +95,42 @@ Visit **[mcp-scout.dev](https://mcp-scout.dev)** for the full web experience:
 | Awesome MCP | 300+ | [awesome-mcp](https://github.com/punkpeye/awesome-mcp) |
 | GitHub Topics | 500+ | `topic:mcp-server` |
 
-## 🛠️ Installation Targets
+## Installation Targets
 
 | Client | Config File | Auto-Detect |
 |--------|-------------|-------------|
-| **Claude Code** | `~/.claude/mcp_servers.json` | ✅ |
-| **Cursor** | `.cursor/mcp.json` | ✅ |
-| **Cline** | `~/.config/cline/mcp_servers.json` | ✅ |
-| **Codex** | `~/.codex/mcp_servers.json` | ✅ |
-| **Generic** | `mcp.json` | ✅ |
+| **Claude Code** | `~/.claude/mcp_servers.json` | YES |
+| **Cursor** | `.cursor/mcp.json` | YES |
+| **Cline** | `~/.config/cline/mcp_servers.json` | YES |
+| **Codex** | `~/.codex/mcp_servers.json` | YES |
+| **Generic** | `mcp.json` | YES |
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 mcp-scout/
+├── package.json                    # Root workspace config
+├── .github/workflows/              # CI/CD pipelines
 ├── src/
-│   ├── cli/           # TypeScript CLI (commander.js)
-│   ├── web/           # Next.js 14 Web App
-│   ├── shared/        # Shared TypeScript types
-│   └── registry/      # Registry aggregator (Node.js)
-├── scripts/           # Sync cron jobs
-└── tests/             # Integration tests
+│   ├── cli/                        # CLI Package (npm publishable)
+│   │   ├── src/
+│   │   │   ├── main.ts             # Entry point
+│   │   │   ├── commands/           # CLI commands
+│   │   │   ├── lib/                # Registry client, formatting
+│   │   │   └── sync.ts             # Registry sync script
+│   │   └── package.json
+│   ├── web/                        # Next.js 14 Web App
+│   │   ├── src/
+│   │   │   ├── app/                # App router pages
+│   │   │   ├── components/         # React components
+│   │   │   └── lib/                # Utilities
+│   │   └── package.json
+│   ├── shared/                     # Shared TypeScript interfaces
+│   └── registry/                   # Registry aggregator
+└── scripts/                        # Sync cron jobs
 ```
 
-## 🔧 Development
+## Development
 
 ### Prerequisites
 - Node.js 20+
@@ -148,67 +160,76 @@ npm run dev        # Starts CLI watch + Next.js dev server
 
 ```
 mcp-scout/
-├── package.json              # Root workspace config
-├── .github/workflows/        # CI/CD pipelines
+├── package.json                    # Root workspace config
+├── .github/workflows/              # CI/CD pipelines
 ├── src/
-│   ├── cli/                  # CLI package
+│   ├── cli/                        # CLI Package (npm publishable)
 │   │   ├── src/
-│   │   │   ├── main.ts       # Entry point
-│   │   │   ├── commands/     # CLI commands
-│   │   │   ├── lib/          # Registry client, formatting
-│   │   │   └── sync.ts       # Registry sync script
+│   │   │   ├── main.ts             # Entry point
+│   │   │   ├── commands/           # CLI commands
+│   │   │   ├── lib/                # Registry client, formatting
+│   │   │   └── sync.ts             # Registry sync script
 │   │   └── package.json
-│   ├── web/                  # Next.js 14 app
+│   ├── web/                        # Next.js 14 Web App
 │   │   ├── src/
-│   │   │   ├── app/          # App router pages
-│   │   │   ├── components/   # React components
-│   │   │   └── lib/          # Utilities
+│   │   │   ├── app/                # App router pages
+│   │   │   ├── components/         # React components
+│   │   │   └── lib/                # Utilities
 │   │   └── package.json
-│   ├── shared/               # Shared TypeScript types
-│   └── registry/             # Registry aggregator
-└── scripts/                  # Sync cron jobs
+│   ├── shared/                     # Shared TypeScript interfaces
+│   └── registry/                   # Registry aggregator
+└── scripts/                        # Sync cron jobs
 ```
 
-## 🤝 Contributing
+## Contributing
 
-We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+We welcome contributions! See CONTRIBUTING.md for guidelines.
 
 ### Quick Contribution Ideas
 
-- 📝 Add a new registry to `src/registry/sources.ts`
-- 🐛 Fix a bug in CLI install logic
-- ✨ Add a new filter to web search
-- 📚 Improve documentation
-- 🎨 Improve UI components
+- Add a new registry to `src/registry/sources.ts`
+- Fix a bug in CLI install logic
+- Add a new filter to web search
+- Improve documentation
+- Improve UI components
 
 ### Code Style
 
 - TypeScript strict mode
 - ESLint + Prettier
-- Conventional commits
-- 100% type coverage goal
+- 2 space indentation
+- Single quotes
+- Trailing commas
+- 100 char line width
 
-## 📄 License
+Run `npm run lint` and `npm run typecheck` before committing.
 
-MIT License - see [LICENSE](LICENSE) for details.
+## Adding a New Registry
 
-## 🙏 Acknowledgments
+1. Add registry config to `src/registry/sources.ts`
+2. Implement fetcher in `src/registry/fetchers/`
+3. Add tests
+3. Update README registry table
 
-- [Model Context Protocol](https://modelcontextprotocol.io) team
-- [DesktopCommanderMCP](https://github.com/wonderwhy-er/DesktopCommanderMCP) - inspiration
-- [OmniRoute](https://github.com/diegosouzapw/OmniRoute) - model routing
+## License
+
+MIT License - see LICENSE for details.
+
+## Acknowledgments
+
+- Model Context Protocol team
+- DesktopCommanderMCP - inspiration
+- OmniRoute - model routing
 - All MCP server authors
 
-## 📞 Support
+## Support
 
-- 🐛 [Issues](https://github.com/SpinachDigital/mcp-scout/issues)
-- 💬 [Discussions](https://github.com/SpinachDigital/mcp-scout/discussions)
-- 📧 abhishek@spinachdigital.com
+- Issues: https://github.com/SpinachDigital/mcp-scout/issues
+- Discussions: https://github.com/SpinachDigital/mcp-scout/discussions
+- Email: abhishek@spinachdigital.com
 
 ---
 
-<div align="center">
-  <strong>Built with ❤️ by <a href="https://github.com/abhishekjha">Abhishek Jha</a> at <a href="https://spinachdigital.com">Spinach Digital</a></strong>
-  <br />
-  <sub>MCP Scout is not affiliated with Anthropic or the Model Context Protocol project.</sub>
-</div>
+Built with care by Abhishek Jha at Spinach Digital
+
+MCP Scout is not affiliated with Anthropic or the Model Context Protocol project.
