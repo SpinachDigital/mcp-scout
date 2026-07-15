@@ -1,0 +1,30 @@
+{
+  "name": "mcp-scout",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MCP Scout - Discover & Install Model Context Protocol Servers",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:cli\" \"npm run dev:web\"",
+    "dev:cli": "npm run dev --workspace=cli",
+    "dev:web": "npm run dev --workspace=web",
+    "build": "npm run build --workspaces",
+    "build:cli": "npm run build --workspace=cli",
+    "build:web": "npm run build --workspace=web",
+    "lint": "npm run lint --workspaces",
+    "test": "npm run test --workspaces",
+    "typecheck": "npm run typecheck --workspaces",
+    "sync": "npm run sync --workspace=cli"
+  },
+  "workspaces": [
+    "src/cli",
+    "src/web"
+  ],
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "packageManager": "npm@10.5.0"
+}
